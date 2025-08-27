@@ -26,6 +26,7 @@ cd Algoritmo-De-Karatsuba-Em-Python
 ```Bash
 python main.py
 ```
+4. Digite os dois números para realizar a multiplicação através do Algoritmo de Karatsuba
 
 
 ## Relatório Técnico
