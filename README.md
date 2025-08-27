@@ -60,55 +60,70 @@ A função karatsuba(num_x, num_y) implementa o algoritmo de Karatsuba seguindo 
     if num_x < 10 or num_y < 10:
         return num_x * num_y
     ```
-
-```python
-
-    Descobre o tamanho dos números para dividí-los em duas metades
-    A parte "Alta(dígitos mais significativos) e "Baixa" (dígitos menos significativos)"
-    """
+2. Calculo do ponto de divisão
+   
+    Descobre o tamanho "s" dos números para encontrar um ponto médio e dividí-los em duas metades.
+    ```python
     s = max(len(str(num_x)), len(str(num_y)))
     m = s // 2
-    """
-    Divide os números nas duas metades
-    """
+    ```
+3. Divisão dos números
+   
+   Usando a função `divmod`, os números são divididos em uma parte "alta" (os dígitos mais significativos) e uma parte "baixa" (os dígitos menos significativos).
+    ```python
     alta_x, baixa_x = divmod(num_x, 10 ** m)
     alta_y, baixa_y = divmod(num_y, 10 ** m)
-    """
-    Utiliza a recursividade para o cálculo de z0, z1 e z2
-    Para dividir o "problema grande em subproblemas menores" 
-    Como acontece em dividir e conquistar.
-    """
-    z0 = karatsuba(baixa_x, baixa_y)
-    z1 = karatsuba((baixa_x + alta_x), (baixa_y + alta_y))
-    z2 = karatsuba(alta_x, alta_y)
+    ```
+4. Chamadas recursivas
 
-    """
+    Utiliza a recursividade para o cálculo de (z0, z1 e z2) as três multiplicações da fórmula de Karatsuba, ara dividir o "problema grande em subproblemas menores", cada chamada é uma nova instância do problema, mas com números menores.
+   ```python
+   z0 = karatsuba(baixa_x, baixa_y)
+   z1 = karatsuba((baixa_x + alta_x), (baixa_y + alta_y))
+   z2 = karatsuba(alta_x, alta_y)
+   ```
+5. Combinação dos Resultados
+   
     Aplica a formula final do Algoritmo de Karatsuba usando os resultados de z0, z1 e z2
-    """
-    return (z2 * 10 ** (2 * m)) + ((z1 - z2 - z0) * 10 ** m) + z0
+   
+   ```python
+     return (z2 * 10 ** (2 * m)) + ((z1 - z2 - z0) * 10 ** m) + z0
+    ```
+6. Bloco de Execução Principal
 
+   O bloco de código sob a condição `if __name__ == "__main__":` serve como o ponto de entrada do programa.
 
-if __name__ == "__main__":
+7. Entrada de Dados do Usuário
+   
+   O programa solicita que o usuário digite dois números através do console.
+   ```
+   num_x = int(input("Digite o primeiro número: "))
+   num_y = int(input("Digite o segundo número: "))
+   ```
+8. Execução do Algoritmo
+   
+   Aqui, a função karatsuba, que contém a lógica principal do projeto, é chamada.
+   ```python
+   resultado = karatsuba(num_x, num_y)
+   ```
+9. Exibição do Resultado:
+    ```python
+   print("\nUtilizando o algoritmo de Karatsuba")
+   print(f"O produto de {num_x} e {num_y} é:")
+   print(resultado)
+   ```
+    
+10. Verificação com metodo padrão:
+       ```python
+       print("\nVerificação com a multiplicação padrão do Python:")
+       print(num_x * num_y)
+       ```
 
-    num_x = int(input("Digite o primeiro número: "))
-    num_y = int(input("Digite o segundo número: "))
-
-    #Utiliza o metodo de Karatsuba
-    resultado = karatsuba(num_x, num_y)
-
-    print("\nUtilizando o algoritmo de Karatsuba")
-    print(f"O produto de {num_x} e {num_y} é:")
-    print(resultado)
-
-    # Verificação com o metodo padrão
-    print("\nVerificação com a multiplicação padrão do Python:")
-    print(num_x * num_y)
-
-    # Verifica se os resultados são iguais
-    assert resultado == num_x * num_y
-    print("\n✅ Resultado verificado com sucesso!")
-```
-
+11. Asserção Programática:
+       ```python
+       assert resultado == num_x * num_y
+       print("\n✅ Resultado verificado com sucesso!")
+       ```
 ## Como executar o projeto
 
 1. Clone o repositório:
@@ -131,6 +146,43 @@ python main.py
 ### O que é a Complexidade Assintótica?
 
 A **complexidade assintótica** é uma maneira de expressar o comportamento de um algoritmo quando o tamanho da entrada tende ao infinito. Ela descreve o tempo ou espaço de execução de um algoritmo em termos do tamanho da entrada, ignorando fatores como o hardware ou o tempo de execução real. A complexidade assintótica ajuda a comparar a eficiência de diferentes algoritmos de forma mais objetiva, independentemente das condições do sistema.
+
+#### Complexidade Assintótica Temporal:
+
+O algoritmo divide o problema de multiplicar dois números de 𝑛 dígitos em 3 multiplicações recursivas, cada uma com aproximadamente 𝑛/2 dígitos.
+
+Ou seja, a recorrência é:
+
+<img src="img/recorrencia.png" alt="recorrencia" width="300" height="70">
+
+Aplicando o teorema mestre:
+
+<img src="img/teorema-mestre.png" alt="Teorema Mestre" width="300" height="70">
+
+O termo "3𝑇(𝑛/2)" vem das três chamadas recursivas (z0, z1, z2).
+O termo 𝑂(𝑛)vem das operações adicionais:
+* somas e subtrações de inteiros 𝑂(𝑛);
+* conversões `len(str(num_x))` (também 𝑂(𝑛));
+* multiplicação por potências de 10 no Python com inteiros arbitrários é 𝑂(𝑛);
+
+
+#### Complexidade Assintótica Espacial:
+
+Espaço usado:
+
+* Cada chamada cria novos inteiros a partir das divisões (divmod) e somas.
+* A profundidade da recursão é (pois cada vez o tamanho do número cai pela metade).
+* Em cada nível, armazenamos alguns inteiros de tamanho até 𝑂(𝑛).
+
+Logo:
+
+<img src="img/espaco.png" alt="espaco" width="300" height="70">
+
+Isso porque:
+
+* Em profundidade máxima (log 𝑛 níveis), cada nível carrega até 𝑂(𝑛) bits de informação.
+
+* Python usa inteiros arbitrários, então o espaço cresce proporcional ao número de dígitos.
 
 ### O que é a Complexidade Ciclomática?
 
