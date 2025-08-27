@@ -51,19 +51,19 @@ if __name__ == "__main__":
 
 ### Algoritmo com explicações
 
-```python
+A função karatsuba(num_x, num_y) implementa o algoritmo de Karatsuba seguindo a estratégia de "dividir para conquistar".
 
-def karatsuba(num_x, num_y):
-    """
-    Multiplicação de dois números inteiros usando o algoritmo de Karatsuba.
-    """
-    """
-    Caso base para o metodo recursivo
-    É aplicado o metodo até que os números fiquem pequenos o suficiente para usar a multiplicação normal.
-    """
+1. Caso Base
+
+   É utilizado a condição de parada, o metodo recursivo é aplicado até que os números fiquem pequenos o suficiente para usar a multiplicação normal.
+
+```python
     if num_x < 10 or num_y < 10:
         return num_x * num_y
-    """
+```
+
+```python
+
     Descobre o tamanho dos números para dividí-los em duas metades
     A parte "Alta(dígitos mais significativos) e "Baixa" (dígitos menos significativos)"
     """
