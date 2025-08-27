@@ -14,6 +14,20 @@ O algoritmo de Karatsuba é uma técnica eficiente para multiplicação de núme
 
 ## Como executar o projeto
 
+1. Clone o repositório:
+```Bash
+git clone https://github.com/gabrieltinoco/Algoritmo-De-Karatsuba-Em-Python.git
+```
+2. Navegue até o diretório do projeto:
+```Bash
+cd Algoritmo-De-Karatsuba-Em-Python
+```
+3. Execute o script Python:
+```Bash
+python main.py
+```
+
+
 ## Relatório Técnico
 
 ### O que é a Complexidade Assintótica?
@@ -22,7 +36,7 @@ A **complexidade assintótica** é uma maneira de expressar o comportamento de u
 
 ### O que é a Complexidade Ciclomática?
 
-A complexidade ciclomática é uma métrica usada para medir a complexidade do fluxo de controle de um programa. Ela calcula o número de caminhos independentes no código, considerando estruturas como loops (`for`, `while`) e condicionais (`if`, `try/except`). Quanto maior o valor, mais complexo é o código.
+A **complexidade ciclomática** é uma métrica usada para medir a complexidade do fluxo de controle de um programa. Ela calcula o número de caminhos independentes no código, considerando estruturas como loops (`for`, `while`) e condicionais (`if`, `try/except`). Quanto maior o valor, mais complexo é o código.
 
 **Fórmula:**  
 \(
