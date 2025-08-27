@@ -55,12 +55,11 @@ A função karatsuba(num_x, num_y) implementa o algoritmo de Karatsuba seguindo 
 
 1. Caso Base
 
-   É utilizado a condição de parada, o metodo recursivo é aplicado até que os números fiquem pequenos o suficiente para usar a multiplicação normal.
-
-```python
+    É utilizado a condição de parada, o metodo recursivo é aplicado até que os números fiquem pequenos o suficiente para usar a multiplicação normal.
+    ```python
     if num_x < 10 or num_y < 10:
         return num_x * num_y
-```
+    ```
 
 ```python
 
