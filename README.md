@@ -147,7 +147,7 @@ python main.py
 
 A **complexidade assintótica** é uma maneira de expressar o comportamento de um algoritmo quando o tamanho da entrada tende ao infinito. Ela descreve o tempo ou espaço de execução de um algoritmo em termos do tamanho da entrada, ignorando fatores como o hardware ou o tempo de execução real. A complexidade assintótica ajuda a comparar a eficiência de diferentes algoritmos de forma mais objetiva, independentemente das condições do sistema.
 
-#### Complexidade Assintótica Temporal:
+#### Complexidade Assintótica Temporal do Algoritmo:
 
 O algoritmo divide o problema de multiplicar dois números de 𝑛 dígitos em 3 multiplicações recursivas, cada uma com aproximadamente 𝑛/2 dígitos.
 
@@ -166,7 +166,7 @@ O termo 𝑂(𝑛)vem das operações adicionais:
 * multiplicação por potências de 10 no Python com inteiros arbitrários é 𝑂(𝑛);
 
 
-#### Complexidade Assintótica Espacial:
+#### Complexidade Assintótica Espacial do Algoritmo:
 
 Espaço usado:
 
@@ -198,4 +198,39 @@ Onde:
 - \(E\): Número de arestas (transições) no grafo do controle de fluxo  
 - \(N\): Número de nós (blocos de código)  
 - \(P\): Componentes conectados (geralmente 1 para programas simples)
+
+#### Complexidade Ciclomática do Algoritmo
+
+Nós (N):
+
+1. Início da função
+2. Decisão if `num_x < 10 or num_y < 10`
+3. Caminho verdadeiro `(return num_x * num_y)`
+4. Caminho falso → cálculos auxiliares `(s, m, alta_x, baixa_x, alta_y, baixa_y)`
+5. Chamada recursiva z0
+6. Chamada recursiva z1
+7. Chamada recursiva z2
+8. Retorno final
+
+**Total: 8 nós**
+
+Arestas (E):
+
+1. (N1) → (N2)
+2. (N2) → (N3) (se condição verdadeira)
+3. (N3) → (N8) (return)
+4. (N2) → (N4) (se condição falsa)
+5. (N4) → (N5) 
+6. (N5) → (N6)
+7. (N6) → (N7)
+8. (N7) → (N8)
+9. (N5) → (N1) (recursividade)
+10. (N6) → (N1) (recursividade)
+11. (N7) → (N1) (recursividade)
+   
+**Total: 11 arestas**
+
+M = E - N + 2(P)
+M = 11 - 8 + 2(1)
+**M = 5;**
 
