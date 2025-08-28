@@ -206,31 +206,41 @@ Nós (N):
 1. Início da função
 2. Decisão if `num_x < 10 or num_y < 10`
 3. Caminho verdadeiro `(return num_x * num_y)`
-4. Caminho falso → cálculos auxiliares `(s, m, alta_x, baixa_x, alta_y, baixa_y)`
-5. Chamada recursiva z0
-6. Chamada recursiva z1
-7. Chamada recursiva z2
-8. Retorno final
+4. Caminho falso → cálculo `(s)`
+5. Cálculo `(m)`
+6. Cálculo `(alta_x, baixa_x)`
+7. Cálculo `(alta_y, baixa_y)`
+8. Chamada recursiva z0
+9. Chamada recursiva z1
+10. Chamada recursiva z2
+11. Retorno final
 
-**Total: 8 nós**
+`(s, m, alta_x, baixa_x, alta_y, baixa_y)`
+
+**Total: 11 nós**
 
 Arestas (E):
 
-1. (N1) → (N2)
+1. (N1) → (N2) (Início para o if)
 2. (N2) → (N3) (se condição verdadeira)
 3. (N3) → (N8) (return)
-4. (N2) → (N4) (se condição falsa)
-5. (N4) → (N5) 
-6. (N5) → (N6)
-7. (N6) → (N7)
-8. (N7) → (N8)
-9. (N5) → (N1) (recursividade)
-10. (N6) → (N1) (recursividade)
-11. (N7) → (N1) (recursividade)
+4. (N2) → (N4) (se condição falsa, calcula `(s)`)
+5. (N4) → (N5) (calculo `(s)` para calculo `(m)`)
+6. (N5) → (N6) (calculo `(m)` para calculo `(alta_x, baixa_x)`)
+7. (N6) → (N7) (calculo `(alta_x, baixa_x)` para calculo `(alta_y, baixa_y)`)
+8. (N7) → (N8) (calculo `(alta_y, baixa_y)` para recursividade z0)
+9. (N8) → (N1) (recursividade)
+10. (N9) → (N1) (recursividade)
+11. (N10) → (N1) (recursividade)
+12. (N8) → (N9) (recursividade z0 para recursividade z1)
+13. (N9) → (N10) (recursividade z1 para recursividade z2)
+14. (N10) → (N11) (recursividade z0 para retorno final)
    
-**Total: 11 arestas**
+**Total: 14 arestas**
 
 M = E - N + 2(P)
-M = 11 - 8 + 2(1)
+M = 14 - 11 + 2(1)
 **M = 5;**
+
+
 
