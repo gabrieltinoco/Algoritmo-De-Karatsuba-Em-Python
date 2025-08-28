@@ -215,32 +215,35 @@ Nós (N):
 10. Chamada recursiva z2
 11. Retorno final
 
-`(s, m, alta_x, baixa_x, alta_y, baixa_y)`
-
 **Total: 11 nós**
 
 Arestas (E):
 
 1. (N1) → (N2) (Início para o if)
 2. (N2) → (N3) (se condição verdadeira)
-3. (N3) → (N8) (return)
-4. (N2) → (N4) (se condição falsa, calcula `(s)`)
-5. (N4) → (N5) (calculo `(s)` para calculo `(m)`)
-6. (N5) → (N6) (calculo `(m)` para calculo `(alta_x, baixa_x)`)
-7. (N6) → (N7) (calculo `(alta_x, baixa_x)` para calculo `(alta_y, baixa_y)`)
-8. (N7) → (N8) (calculo `(alta_y, baixa_y)` para recursividade z0)
-9. (N8) → (N1) (recursividade)
-10. (N9) → (N1) (recursividade)
-11. (N10) → (N1) (recursividade)
-12. (N8) → (N9) (recursividade z0 para recursividade z1)
-13. (N9) → (N10) (recursividade z1 para recursividade z2)
-14. (N10) → (N11) (recursividade z0 para retorno final)
+3. (N2) → (N4) (se condição falsa, calcula `(s)`)
+4. (N4) → (N5) (calculo `(s)` para calculo `(m)`)
+5. (N5) → (N6) (calculo `(m)` para calculo `(alta_x, baixa_x)`)
+6. (N6) → (N7) (calculo `(alta_x, baixa_x)` para calculo `(alta_y, baixa_y)`)
+7. (N7) → (N8) (calculo `(alta_y, baixa_y)` para recursividade z0)
+8. (N8) → (N1) (recursividade)
+9. (N9) → (N1) (recursividade)
+10. (N10) → (N1) (recursividade)
+11. (N8) → (N9) (recursividade z0 para recursividade z1)
+12. (N9) → (N10) (recursividade z1 para recursividade z2)
+13. (N10) → (N11) (recursividade z0 para retorno final)
    
-**Total: 14 arestas**
+**Total: 13 arestas**
 
 M = E - N + 2(P)
-M = 14 - 11 + 2(1)
-**M = 5;**
+M = 13 - 11 + 2(1)
+**M = 4;**
+
+### Grafo de Fluxo:
+
+<img src="img/grafo-de-fluxo.png" alt="espaco" width="500" height="1500">
+
+
 
 
 
