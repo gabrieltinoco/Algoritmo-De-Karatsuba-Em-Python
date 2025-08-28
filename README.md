@@ -147,7 +147,7 @@ python main.py
 
 A **complexidade assintótica** é uma maneira de expressar o comportamento de um algoritmo quando o tamanho da entrada tende ao infinito. Ela descreve o tempo ou espaço de execução de um algoritmo em termos do tamanho da entrada, ignorando fatores como o hardware ou o tempo de execução real. A complexidade assintótica ajuda a comparar a eficiência de diferentes algoritmos de forma mais objetiva, independentemente das condições do sistema.
 
-#### Complexidade Assintótica Temporal:
+#### Complexidade Assintótica Temporal do Algoritmo:
 
 O algoritmo divide o problema de multiplicar dois números de 𝑛 dígitos em 3 multiplicações recursivas, cada uma com aproximadamente 𝑛/2 dígitos.
 
@@ -166,7 +166,7 @@ O termo 𝑂(𝑛)vem das operações adicionais:
 * multiplicação por potências de 10 no Python com inteiros arbitrários é 𝑂(𝑛);
 
 
-#### Complexidade Assintótica Espacial:
+#### Complexidade Assintótica Espacial do Algoritmo:
 
 Espaço usado:
 
@@ -198,4 +198,49 @@ Onde:
 - \(E\): Número de arestas (transições) no grafo do controle de fluxo  
 - \(N\): Número de nós (blocos de código)  
 - \(P\): Componentes conectados (geralmente 1 para programas simples)
+
+#### Complexidade Ciclomática do Algoritmo
+
+Nós (N):
+
+1. Início da função
+2. Decisão if `num_x < 10 or num_y < 10`
+3. Caminho verdadeiro `(return num_x * num_y)`
+4. Caminho falso → cálculo `(s)`
+5. Cálculo `(m)`
+6. Cálculo `(alta_x, baixa_x)`
+7. Cálculo `(alta_y, baixa_y)`
+8. Chamada recursiva z0
+9. Chamada recursiva z1
+10. Chamada recursiva z2
+11. Retorno final
+
+`(s, m, alta_x, baixa_x, alta_y, baixa_y)`
+
+**Total: 11 nós**
+
+Arestas (E):
+
+1. (N1) → (N2) (Início para o if)
+2. (N2) → (N3) (se condição verdadeira)
+3. (N3) → (N8) (return)
+4. (N2) → (N4) (se condição falsa, calcula `(s)`)
+5. (N4) → (N5) (calculo `(s)` para calculo `(m)`)
+6. (N5) → (N6) (calculo `(m)` para calculo `(alta_x, baixa_x)`)
+7. (N6) → (N7) (calculo `(alta_x, baixa_x)` para calculo `(alta_y, baixa_y)`)
+8. (N7) → (N8) (calculo `(alta_y, baixa_y)` para recursividade z0)
+9. (N8) → (N1) (recursividade)
+10. (N9) → (N1) (recursividade)
+11. (N10) → (N1) (recursividade)
+12. (N8) → (N9) (recursividade z0 para recursividade z1)
+13. (N9) → (N10) (recursividade z1 para recursividade z2)
+14. (N10) → (N11) (recursividade z0 para retorno final)
+   
+**Total: 14 arestas**
+
+M = E - N + 2(P)
+M = 14 - 11 + 2(1)
+**M = 5;**
+
+
 
