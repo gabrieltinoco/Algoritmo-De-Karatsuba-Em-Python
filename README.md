@@ -241,7 +241,7 @@ M = 13 - 11 + 2(1)
 
 ### Grafo de Fluxo:
 
-<img src="img/grafo-de-fluxo.png" alt="grafo-de-fluxo" width="500" height="1500">
+<img src="" alt="grafo-de-fluxo" width="500" height="1500">
 
 
 
